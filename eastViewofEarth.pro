@@ -31,7 +31,7 @@ function utc2Bjt, utc
 
   bjtHour = (!hourConvert)[utcHour]
 
-  if !dayAdd1.HasValue(utcHour) then begin
+  if (!dayAdd1).HasValue(utcHour) then begin
 
     if (!dateConvert).HasKey(utcMonth + utcDay) then begin
 
@@ -44,7 +44,7 @@ function utc2Bjt, utc
         bjtDay = bjtDate.Substring(2, 3)
       endelse
 
-      if !yearAdd1.HasValue(utcMonth + utcDay) then begin
+      if (!yearAdd1).HasValue(utcMonth + utcDay) then begin
         yearTemp = utcYear.ToInteger() + 1S
         bjtYear = yearTemp.ToString()
       endif else begin
@@ -91,17 +91,17 @@ function hdf2Jpg, fn, imgQlt
 
   nirSort = nir.Sort()
   nirRemove = nirSort.Filter('removeFilled', 65535)
-  minNIR = nirSort[FLOOR(nir.LENGTH * 0.02)]
+  minNIR = nirRemove[FLOOR(nirRemove.LENGTH * 0.02)]
   maxNIR = nirRemove[FLOOR(nirRemove.LENGTH * 0.98)]
 
   redSort = red.Sort()
   redRemove = redSort.Filter('removeFilled', 65535)
-  minRED = redSort[FLOOR(red.LENGTH * 0.02)]
+  minRED = redRemove[FLOOR(redRemove.LENGTH * 0.02)]
   maxRED = redRemove[FLOOR(redRemove.LENGTH * 0.98)]
 
   bluSort = blu.Sort()
   bluRemove = bluSort.Filter('removeFilled', 65535)
-  minBLU = bluSort[FLOOR(blu.LENGTH * 0.02)]
+  minBLU = bluRemove[FLOOR(bluRemove.LENGTH * 0.02)]
   maxBLU = bluRemove[FLOOR(bluRemove.LENGTH * 0.98)]
 
   nir = (red = (blu = !NULL))
@@ -196,7 +196,7 @@ pro eastViewofEarth_event, event
     end
     'qltList':begin
       idx = event.index
-      qltStr = !allQuality[idx]
+      qltStr = (!allQuality)[idx]
     end
     'delayInput':begin
       WIDGET_CONTROL, delayInput, get_value = delay
