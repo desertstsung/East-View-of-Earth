@@ -68,10 +68,10 @@ function utc2Bjt, utc
   RETURN, bjtYear + bjtMonth + bjtDay + bjtHour + minute
 end
 
-function removeFilled, value, removeValue
+function removeFilled, value, maxRange
   compile_opt idl2, hidden
 
-  RETURN, UINT(value ne removevalue) * value
+  RETURN, UINT(value le maxRange) * value
 end
 
 function hdf2Jpg, fn, imgQlt
@@ -90,17 +90,17 @@ function hdf2Jpg, fn, imgQlt
   arr[2, *, *] = blu
 
   nirSort = nir.Sort()
-  nirRemove = nirSort.Filter('removeFilled', 65535)
+  nirRemove = nirSort.Filter('removeFilled', 4095)
   minNIR = nirRemove[FLOOR(nirRemove.LENGTH * 0.02)]
   maxNIR = nirRemove[FLOOR(nirRemove.LENGTH * 0.98)]
 
   redSort = red.Sort()
-  redRemove = redSort.Filter('removeFilled', 65535)
+  redRemove = redSort.Filter('removeFilled', 4095)
   minRED = redRemove[FLOOR(redRemove.LENGTH * 0.02)]
   maxRED = redRemove[FLOOR(redRemove.LENGTH * 0.98)]
 
   bluSort = blu.Sort()
-  bluRemove = bluSort.Filter('removeFilled', 65535)
+  bluRemove = bluSort.Filter('removeFilled', 4095)
   minBLU = bluRemove[FLOOR(bluRemove.LENGTH * 0.02)]
   maxBLU = bluRemove[FLOOR(bluRemove.LENGTH * 0.98)]
 
@@ -294,7 +294,7 @@ pro eastViewofEarth
   start = WIDGET_BUTTON(base, $
     xsize = 310, ysize = 25, $
     xoffset = 10, yoffset = 165, $
-    value = 'Just Do It!', uvalue = 'start')
+    value = 'Hail IDL!', uvalue = 'start')
 
   WIDGET_CONTROL, base, /REALIZE
   XMANAGER, 'EastViewofEarth', base, /NO_BLOCK
