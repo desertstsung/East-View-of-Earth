@@ -1,5 +1,5 @@
-;×÷Õß¸üĞÂÓÚ2018Äê07ÔÂ01ÈÕ
-;ÖĞÎÄ°æ±¾
+;ä½œè€…æ›´æ–°äº2019å¹´07æœˆ01æ—¥
+;ä¸­æ–‡ç‰ˆæœ¬
 
 pro def_sysv
   compile_opt idl2, hidden
@@ -15,7 +15,7 @@ pro def_sysv
     '16', '17', '18', '19', '20', '21', '22', '23', $
     '00', '01', '02', '03', '04', '05', '06', '07']
 
-  DEFSYSV, '!allQuality', ['µÍ', 'Õı³£', '¸ß'], 1
+  DEFSYSV, '!allQuality', ['ä½', 'æ­£å¸¸', 'é«˜'], 1
   DEFSYSV, '!lut', HASH(!allQuality, [100, 350, 600]), 1
   DEFSYSV, '!hourConvert', HASH(utcHour4C, bjtHour4C), 1
   DEFSYSV, '!dayAdd1', ['16', '17', '18', '19', '20', '21', '22', '23'], 1
@@ -34,20 +34,20 @@ pro eastViewofEarth_ZH
     delHdf, delJpg, $
     start, proLabelC
 
-  base = WIDGET_BASE(title = '¶«·½´ó¹Û', $
+  base = WIDGET_BASE(title = 'ä¸œæ–¹å¤§è§‚', $
     xsize = 340, ysize = 240, mbar = mbar)
 
-  about = WIDGET_BUTTON(mbar, value = '¹ØÓÚ', /menu)
+  about = WIDGET_BUTTON(mbar, value = 'å…³äº', /menu)
   author = WIDGET_BUTTON(about, $
-    value = '×÷Õß', uvalue = 'author')
+    value = 'ä½œè€…', uvalue = 'author')
   prgrm = WIDGET_BUTTON(about, $
-    value = '´Ë³ÌĞò', uvalue = 'prgrm')
+    value = 'æ­¤ç¨‹åº', uvalue = 'prgrm')
 
   inputStr = ''
   selectInput = WIDGET_BUTTON(base, $
     xsize = 100, ysize = 25, $
     xoffset = 12, yoffset = 10, $
-    value = 'Ñ¡ÔñÎÄ¼ş¼Ğ', uvalue = 'selectInput')
+    value = 'é€‰æ‹©æ–‡ä»¶å¤¹', uvalue = 'selectInput')
   inputText = WIDGET_TEXT(base, $
     xsize = 30, ysize = 1, $
     xoffset = 130, yoffset = 11, $
@@ -57,18 +57,18 @@ pro eastViewofEarth_ZH
   dlyLabel = WIDGET_LABEL(base, $
     xsize = 100, ysize = 20, $
     xoffset = 12, yoffset = 50, $
-    value = 'Ê±¼ä¼ä¸ô')
+    value = 'æ—¶é—´é—´éš”')
   delayInput = WIDGET_SLIDER(base, $
     xsize = 150, ysize = 25, $
     xoffset = 130, yoffset = 40, $
     max = 200, min = 10, $
     value = delay, uvalue = 'delayInput')
 
-  qltStr = 'µÍ'
+  qltStr = 'ä½'
   qltLabel = WIDGET_LABEL(base, $
     xsize = 100, ysize = 20, $
     xoffset = 12, yoffset = 80, $
-    value = '·Ö±æÂÊ')
+    value = 'åˆ†è¾¨ç‡')
   qltList = WIDGET_DROPLIST(base, $
     xsize = 100, ysize = 24, $
     xoffset = 130, yoffset = 77, $
@@ -77,37 +77,37 @@ pro eastViewofEarth_ZH
   delHdfLabel = WIDGET_LABEL(base, $
     xsize = 60, ysize = 20, $
     xoffset = 12, yoffset = 110, $
-    value = 'É¾³ıHDF')
+    value = 'åˆ é™¤HDF')
   delHdfBase = WIDGET_BASE(base, $
     xsize = 150, ysize = 20, $
     xoffset = 130, yoffset = 105, $
     /exclusive, /row)
   delHdf_yes = WIDGET_BUTTON(delHdfBase, /no_release, $
-    value='ÊÇ', uvalue='delHdf_yes')
+    value='æ˜¯', uvalue='delHdf_yes')
   delHdf_no = WIDGET_BUTTON(delHdfBase, /no_release, $
-    value='·ñ', uvalue='delHdf_no')
+    value='å¦', uvalue='delHdf_no')
   WIDGET_CONTROL, delHdf_yes, /set_button
   delHdf = 1B
 
   delJpgLabel = WIDGET_LABEL(base, $
     xsize = 60, ysize = 20, $
     xoffset = 12, yoffset = 140, $
-    value = 'É¾³ıÍ¼Æ¬')
+    value = 'åˆ é™¤å›¾ç‰‡')
   delJpgBase = WIDGET_BASE(base, $
     xsize = 150, ysize = 20, $
     xoffset = 130, yoffset = 135, $
     /exclusive, /row)
   delJpg_yes = WIDGET_BUTTON(delJpgBase, /no_release, $
-    value='ÊÇ', uvalue='delJpg_yes')
+    value='æ˜¯', uvalue='delJpg_yes')
   delJpg_no = WIDGET_BUTTON(delJpgBase, /no_release, $
-    value='·ñ', uvalue='delJpg_no')
+    value='å¦', uvalue='delJpg_no')
   WIDGET_CONTROL, delJpg_yes, /set_button
   delJpg = 1B
 
   start = WIDGET_BUTTON(base, $
     xsize = 310, ysize = 25, $
     xoffset = 10, yoffset = 165, $
-    value = '¿ªÊ¼ÖÆ×÷¶¯Í¼', uvalue = 'start')
+    value = 'å¼€å§‹åˆ¶ä½œåŠ¨å›¾', uvalue = 'start')
 
   proLabelC = WIDGET_LABEL(base, $
     xsize = 200, ysize = 20, $
@@ -125,16 +125,16 @@ pro eastViewofEarth_ZH_event, event
 
   WIDGET_CONTROL, event.ID, get_uvalue = uvalue
 
-  authorStr = '¶­¼øèº' + STRING(10B) + $
-    '³É¶¼ĞÅÏ¢¹¤³Ì´óÑ§' + $
+  authorStr = 'è‘£é‰´éŸ¬' + STRING(10B) + $
+    'æˆéƒ½ä¿¡æ¯å·¥ç¨‹å¤§å­¦' + $
     STRING(10B) + 'rpc.tsung@gmail.com'
-  prgrmStr = 'ÎÄ¼ş¼ĞÎª´æ·Å·çÔÆËÄºÅAĞÇµÄAGRI´«¸ĞÆ÷Êı¾İHDFµÄÎÄ¼ş¼Ğ£¬Ö§³Ö²ÊÍ¼µÄ·Ö±æÂÊÎª1/2/4KM' $
+  prgrmStr = 'æ–‡ä»¶å¤¹ä¸ºå­˜æ”¾é£äº‘å››å·Aæ˜Ÿçš„AGRIä¼ æ„Ÿå™¨æ•°æ®HDFçš„æ–‡ä»¶å¤¹ï¼Œæ”¯æŒå½©å›¾çš„åˆ†è¾¨ç‡ä¸º1/2/4KM' $
     + STRING(10B) $
-    + 'Êä³öÎªÊ±ĞòµÄGIF¸ñÊ½¶¯Í¼£¬Í¼Æ¬ºÍ¶¯Í¼µÄÎÄ¼şÃû¸ñÊ½¾ùÎª±±¾©Ê±¼ä'
+    + 'è¾“å‡ºä¸ºæ—¶åºçš„GIFæ ¼å¼åŠ¨å›¾ï¼Œå›¾ç‰‡å’ŒåŠ¨å›¾çš„æ–‡ä»¶åæ ¼å¼å‡ä¸ºåŒ—äº¬æ—¶é—´'
 
   case uvalue of
-    'author': inf = DIALOG_MESSAGE(authorStr, /inf, title = '¹ØÓÚ×÷Õß')
-    'prgrm': inf = DIALOG_MESSAGE(prgrmStr, /inf, title = '¹ØÓÚ´Ë³ÌĞò')
+    'author': inf = DIALOG_MESSAGE(authorStr, /inf, title = 'å…³äºä½œè€…')
+    'prgrm': inf = DIALOG_MESSAGE(prgrmStr, /inf, title = 'å…³äºæ­¤ç¨‹åº')
     'selectInput':begin
       inputStr = DIALOG_PICKFILE(/directory)
       WIDGET_CONTROL, inputText, set_value = inputStr
@@ -248,14 +248,14 @@ function hdf2Jpg, fn, imgQlt
 
   utcDateTime = (FILE_BASENAME(fn)).Extract('20[1-4][0-9][0,1][0-9][0-3][0-9][0-9][0-9][0-9][0-9]')
   bjtDateTime = utc2Bjt(utcDateTime)
-  date = bjtDateTime.Substring(0, 3) + 'Äê' + $
-    bjtDateTime.Substring(4, 5) + 'ÔÂ' + $
-    bjtDateTime.Substring(6, 7) + 'ÈÕ'
-  time = bjtDateTime.Substring(8, 9) + 'Ê±' + $
-    bjtDateTime.Substring(10, 11) + '·Ö'
+  date = bjtDateTime.Substring(0, 3) + 'å¹´' + $
+    bjtDateTime.Substring(4, 5) + 'æœˆ' + $
+    bjtDateTime.Substring(6, 7) + 'æ—¥'
+  time = bjtDateTime.Substring(8, 9) + 'æ—¶' + $
+    bjtDateTime.Substring(10, 11) + 'åˆ†'
   oImage = IMAGE(arr, /order, /buffer, $
     max_value = maxValue, min_value = minValue, $
-    title = 'ÉãÓÚ·çÔÆËÄºÅAĞÇ' + STRING(10B) + '±±¾©Ê±¼ä£º' + date $
+    title = 'æ‘„äºé£äº‘å››å·Aæ˜Ÿ' + STRING(10B) + 'åŒ—äº¬æ—¶é—´ï¼š' + date $
     + '  ' + time)
   ofn = 'FY4A-AGRI_' + date + '_' + bjtDateTime.Substring(8, 9) + $
     bjtDateTime.Substring(10, 11) + '.JPG'
@@ -277,12 +277,12 @@ pro hdf2Gif, dir, imgQlt, dlyTim, delHdf, delJpg, wid
   utcEnd = (FILE_BASENAME(hdfGroup[-1])).Extract('20[1-4][0-9][0,1][0-9][0-3][0-9][0-9][0-9][0-9][0-9]')
   bjtBegin = utc2Bjt(utcBegin)
   bjtEnd = utc2Bjt(utcEnd)
-  dateBegin = bjtBegin.Substring(0,3) + 'Äê' + $
-    bjtBegin.Substring(4,5) + 'ÔÂ' + $
-    bjtBegin.Substring(6,7) + 'ÈÕ'
-  dateEnd = bjtEnd.Substring(0,3) + 'Äê' + $
-    bjtEnd.Substring(4,5) + 'ÔÂ' + $
-    bjtEnd.Substring(6,7) + 'ÈÕ'
+  dateBegin = bjtBegin.Substring(0,3) + 'å¹´' + $
+    bjtBegin.Substring(4,5) + 'æœˆ' + $
+    bjtBegin.Substring(6,7) + 'æ—¥'
+  dateEnd = bjtEnd.Substring(0,3) + 'å¹´' + $
+    bjtEnd.Substring(4,5) + 'æœˆ' + $
+    bjtEnd.Substring(6,7) + 'æ—¥'
 
   if dateBegin ne dateEnd then begin
     out_gif = dateBegin + '_' + dateEnd + '.GIF'
@@ -292,7 +292,7 @@ pro hdf2Gif, dir, imgQlt, dlyTim, delHdf, delJpg, wid
 
   foreach hdffn, hdfGroup, index do begin
     WIDGET_CONTROL, wid, set_value = $
-      'ÕıÔÚ´¦Àí:' + (index + 1).ToString() + '/' + nHdfStr
+      'æ­£åœ¨å¤„ç†:' + (index + 1).ToString() + '/' + nHdfStr
     out_jpg = hdf2Jpg(hdffn, imgQlt)
     if delHdf then FILE_DELETE, hdffn
     READ_JPEG, out_jpg, arrOrg
@@ -304,6 +304,6 @@ pro hdf2Gif, dir, imgQlt, dlyTim, delHdf, delJpg, wid
   endforeach
 
   write_gif, out_gif, /close
-  WIDGET_CONTROL, wid, set_value = 'Íê³É£¡'
+  WIDGET_CONTROL, wid, set_value = 'å®Œæˆï¼'
   SPAWN, 'explorer ' + dir, /hide
 end
