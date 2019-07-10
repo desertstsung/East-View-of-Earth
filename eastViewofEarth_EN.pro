@@ -1,4 +1,4 @@
-;Last Edit by Deserts Tsung on 2018-07-01
+;Last Edit by Deserts Tsung on 2019-07-01
 ;EN Version
 
 pro def_sysv
